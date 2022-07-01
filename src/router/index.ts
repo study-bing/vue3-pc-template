@@ -7,7 +7,7 @@ import errorRouter from './modules/error'
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        component: () => import('../views/login/Login.vue'),
+        component: () => import('../views/login/LoginPage.vue'),
     },
     {
         path: '/console',
