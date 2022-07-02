@@ -1,5 +1,4 @@
-import { unref } from 'vue'
-import type { Ref } from 'vue'
+import { unref, Ref } from 'vue'
 
 type FunctionArgs<Args extends any[] = any[], Return = void> = (...args: Args) => Return
 
@@ -20,17 +19,17 @@ export const debounce = <T extends FunctionArgs>(
     timeout: MaybeRef<number> = 200,
     immediate = false
 ) => {
-    let timmer: TimeoutHandle
+    let timer: TimeoutHandle
     const wait = unref(timeout)
     return () => {
-        timmer && clearTimeout(timmer)
+        timer && clearTimeout(timer)
         if (immediate) {
-            if (!timmer) {
+            if (!timer) {
                 fn()
             }
-            timmer = setTimeout(() => (timmer = null), wait)
+            timer = setTimeout(() => (timer = null), wait)
         } else {
-            timmer = setTimeout(fn, wait)
+            timer = setTimeout(fn, wait)
         }
     }
 }

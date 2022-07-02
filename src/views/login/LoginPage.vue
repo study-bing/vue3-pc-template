@@ -19,11 +19,13 @@
             />
         </el-form-item>
     </el-form>
+    {{ useUserStoreHook().name }}
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue'
 import { useRenderIcon } from '@/components/ReIcon/src/hooks'
+import { useUserStoreHook } from '@/store/modules/user'
 defineOptions({
     name: 'loginPage',
 })
