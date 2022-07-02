@@ -1,0 +1,18 @@
+{
+    "vue3snippets.enable-compile-vue-file-on-did-save-code": false,
+    "editor.detectIndentation": false, // vscode默认启用了根据文件类型自动设置tabsize的选项
+    "editor.renderWhitespace": "none", //tab为四个空格
+    "eslint.enable": true, //eslint 代码自动检查相关配置
+    "editor.formatOnSave": false, // 自动修复
+    "editor.tabSize": 4, //代码缩进修改成4个空格
+    "prettier.semi": false, //去掉代码结尾的分号
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "css.lint.propertyIgnoredDueToDisplay": "ignore",
+    "editor.formatOnPaste": false, //粘贴自动格式化
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true // #让函数(名)和后面的括号之间加个空格
+}
