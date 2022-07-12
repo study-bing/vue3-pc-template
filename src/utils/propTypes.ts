@@ -15,6 +15,7 @@ const propTypes = createTypes({
     number: undefined,
     object: undefined,
     integer: undefined,
+    array: () => [],
 }) as PropTypes
 
 propTypes.extend([

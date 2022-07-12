@@ -2,7 +2,7 @@ import { usePermissionStoreHook } from '@/store/modules/permission'
 import { Directive } from 'vue'
 import type { DirectiveBinding } from 'vue'
 
-export const auth: Directive = {
+export const allow: Directive = {
     mounted(el: HTMLElement, binding: DirectiveBinding) {
         const { value } = binding
         if (value) {
@@ -11,8 +11,6 @@ export const auth: Directive = {
             if (!hasAuth) {
                 el.parentNode.removeChild(el)
             }
-        } else {
-            throw new Error('need roles! Like v-auth="[\'admin\',\'test\']"')
         }
     },
 }

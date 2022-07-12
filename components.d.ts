@@ -4,18 +4,20 @@
 import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    ElButton: typeof import('element-plus/es')['ElButton']
-    ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
-    ElForm: typeof import('element-plus/es')['ElForm']
-    ElFormItem: typeof import('element-plus/es')['ElFormItem']
-    ElInput: typeof import('element-plus/es')['ElInput']
-    ElRow: typeof import('element-plus/es')['ElRow']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
-    Select: typeof import('./src/components/ReIcon/src/Select.vue')['default']
-  }
+    export interface GlobalComponents {
+        ElButton: typeof import('element-plus/es')['ElButton']
+        ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+        ElMenu: typeof import('element-plus/es')['ElMenu']
+        ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+        ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+        ObDialog: typeof import('./src/components/obDialog/ObDialog.vue')['default']
+        ObInput: typeof import('./src/components/obInput/ObInput.vue')['default']
+        ObTablePage: typeof import('./src/components/obTable/ObTablePage.vue')['default']
+        ObTabs: typeof import('./src/components/obTabs/ObTabs.vue')['default']
+        RouterLink: typeof import('vue-router')['RouterLink']
+        RouterView: typeof import('vue-router')['RouterView']
+        SvgIcon: typeof import('./src/components/svgicon/SvgIcon.vue')['default']
+    }
 }
 
 export {}

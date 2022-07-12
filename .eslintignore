@@ -1,4 +1,10 @@
 public
 dist
-*.d.ts
 package.json
+.eslint.js
+*.d.ts
+lintstagedrc.js
+auto-imports.d.ts
+components.d.ts
+types.d.ts
+global.d.ts

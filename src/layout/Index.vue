@@ -1,28 +1,48 @@
 <template>
-    <section>
-        console
-        <FontIcon icon="team-iconlogo" svg style="width: 35px; height: 35px" />
-        <el-button>Default</el-button>
-        {{ version }}
-        <router-view>
-            <template #default="{ Component, route }">
-                <transition name="fade" mode="out-in">
-                    <component :is="Component" :key="route.fullPath" />
-                </transition>
-            </template>
-        </router-view>
+    <section class="view-content">
+        <top-header />
+        <section class="view-body">
+            <left-menu />
+            <router-view>
+                <template #default="{ Component, route }">
+                    <transition name="fade" mode="out-in">
+                        <section :key="route.path" class="router-content">
+                            <component :is="Component" />
+                        </section>
+                    </transition>
+                </template>
+            </router-view>
+        </section>
     </section>
 </template>
 
 <script setup lang="ts">
-import { getConfig } from '@/config'
-import { successMessage } from '@/utils/message'
+import LeftMenu from './components/LeftMenu.vue'
+import TopHeader from './components/TopHeader.vue'
 defineOptions({
-    name: 'LayoutIndex',
+    name: 'layoutIndex',
 })
-const version = getConfig('Version')
-
-successMessage('ss')
 </script>
+<style scoped lang="scss">
+.view-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
 
-<style></style>
+.view-body {
+    flex: auto;
+    overflow: auto;
+    display: flex;
+}
+
+.router-content {
+    padding: 6px;
+    background-color: #e8ecf0;
+    flex: auto;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+</style>

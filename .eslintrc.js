@@ -103,12 +103,6 @@ module.exports = {
         'no-trailing-spaces': 1, //一行结束后面不要有空格
         'no-undef': 1, //不能有未定义的变量
         'no-eval': 1, //禁止使用eval
-        'vue/no-parsing-error': [
-            2,
-            {
-                'x-invalid-end-tag': false,
-            },
-        ],
         'no-dupe-keys': 2, //在创建对象字面量时不允许键重复 {a:1,a:1}
         'no-dupe-args': 2, //函数参数不能重复
         'prefer-template': 'error', //以编程方式构建字符串时，使用模板字符串而不是连接符 例:How are you, ${name}?

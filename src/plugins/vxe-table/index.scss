@@ -1,0 +1,10 @@
+@import 'vxe-table/styles/variable.scss';
+// 修改样式变量
+$vxe-font-color: #333333;
+
+// ...
+@import 'vxe-table/styles/modules.scss';
+
+i {
+    border-color: initial;
+}

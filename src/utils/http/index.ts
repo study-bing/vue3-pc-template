@@ -1,15 +1,10 @@
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
-import {
-    resultType,
-    PureHttpError,
-    RequestMethods,
-    PureHttpResponse,
-    PureHttpRequestConfig,
-} from './types.d'
+import { PureHttpError, RequestMethods, PureHttpResponse, PureHttpRequestConfig } from './types.d'
 import qs from 'qs'
 import NProgress from '../progress'
 import { loadEnv } from '@build/index'
-import { useUserStoreHook } from '@/store/modules/user'
+// import { useUserStoreHook } from '@/store/modules/user'
+import { warnMessage } from '@/utils/message'
 
 // 加载环境变量 VITE_PROXY_DOMAIN（开发环境）  VITE_PROXY_DOMAIN_REAL（打包后的线上环境）
 const { VITE_PROXY_DOMAIN, VITE_PROXY_DOMAIN_REAL } = loadEnv()
@@ -54,26 +49,14 @@ class PureHttp {
                     PureHttp.initConfig.beforeRequestCallback($config)
                     return $config
                 }
-                // const token = getToken();
-                // if (token) {
-                //     const data = JSON.parse(token);
-                //     const now = new Date().getTime();
-                //     const expired = parseInt(data.expires) - now <= 0;
-                //     if (expired) {
-                //         // token过期刷新
-                //         useUserStoreHook()
-                //             .refreshToken(data)
-                //             .then((res: resultType) => {
-                //                 config.headers["Authorization"] = "Bearer " + res.accessToken;
-                //                 return $config;
-                //             });
-                //     } else {
-                //         config.headers["Authorization"] = "Bearer " + data.accessToken;
-                //         return $config;
-                //     }
-                // } else {
-                return $config
-                // }
+                const token =
+                    'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLljoLllYYxIiwiZmlyZWZseSI6IjFwYTV0dCIsImV4cCI6MTY1NzYyNjk0OCwiaWF0IjoxNjU3NTkwOTQ4fQ.yDhK0Ic38WQ9P2AAB9mfTpDScTHVF6t6QsieSco_BQgDvzkn0Sx08n7CCU2FwMD6AQ1tt1sZ3dPNYk_a6i8NRA'
+                if (token) {
+                    config.headers['Authorization'] = `Bearer ${token}`
+                    return $config
+                } else {
+                    return $config
+                }
             },
             error => {
                 return Promise.reject(error)
@@ -98,7 +81,22 @@ class PureHttp {
                     PureHttp.initConfig.beforeResponseCallback(response)
                     return response.data
                 }
-                return response.data
+                if (response.headers['content-type'].includes('application/vnd.ms-excel')) {
+                    return Promise.resolve(response)
+                } else if (response.headers['content-type'] === 'image/jpeg') {
+                    const url = window.URL.createObjectURL(response.data)
+                    return Promise.resolve(url)
+                } else {
+                    const responseCode = response.status
+                    // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
+                    // 否则的话抛出错误
+                    if (responseCode === 200) {
+                        return Promise.resolve(response.data)
+                    } else {
+                        warnMessage(response.data.hint || response.data.message)
+                        return Promise.reject(response.data)
+                    }
+                }
             },
             (error: PureHttpError) => {
                 const $error = error

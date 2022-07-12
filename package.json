@@ -16,13 +16,18 @@
         "preinstall": "npx only-allow pnpm"
     },
     "dependencies": {
+        "@vueuse/core": "^8.9.1",
         "axios": "^0.27.2",
+        "consola": "^2.15.3",
+        "echarts": "^5.3.3",
         "element-plus": "^2.2.5",
         "mitt": "^3.0.0",
         "nprogress": "^0.2.0",
         "path": "^0.12.7",
         "pinia": "^2.0.14",
         "qs": "^6.10.1",
+        "resize-observer-polyfill": "^1.5.1",
+        "vite-svg-loader": "^3.4.0",
         "vue": "^3.2.25",
         "vue-router": "^4.0.15",
         "vue-types": "^4.1.1",
@@ -64,10 +69,16 @@
         "unplugin-auto-import": "^0.8.7",
         "unplugin-vue-components": "^0.19.6",
         "unplugin-vue-define-options": "^0.6.1",
-        "vite": "^2.9.9",
+        "vite": "^2.9.13",
         "vite-plugin-remove-console": "^1.0.0",
-        "vite-svg-loader": "^3.3.0",
+        "vite-plugin-style-import": "^2.0.0",
+        "vite-plugin-svg-icons": "^2.0.1",
         "vue-eslint-parser": "^8.2.0",
         "vue-tsc": "^0.34.7"
+    },
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=8.0.0",
+        "pnpm": ">=7.0.0"
     }
 }

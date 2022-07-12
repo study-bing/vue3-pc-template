@@ -15,13 +15,17 @@
         "forceConsistentCasingInFileNames": true,
         "sourceMap": true,
         "baseUrl": ".",
-        "allowJs": false,
+        "allowJs": true,
         "resolveJsonModule": true,
         "lib": ["dom", "esnext"],
         "incremental": true,
         "paths": {
+            "/@/*": ["src/*"],
             "@/*": ["src/*"],
             "@build/*": ["build/*"],
+            "@components/*": ["src/components/*"],
+            "@utils/*": ["src/utils/*"],
+            "@api/*": ["src/api/*"],
             "/#/*": ["types/*"]
         },
         "types": [
@@ -30,7 +34,8 @@
             "element-plus/global",
             "@pureadmin/table/volar",
             "unplugin-vue-define-options",
-            "@pureadmin/descriptions/volar"
+            "@pureadmin/descriptions/volar",
+            "vite-plugin-svg-icons/client"
         ],
         "typeRoots": ["./node_modules/@types/", "./types"]
     },
@@ -40,6 +45,9 @@
         "src/**/*.vue",
         "types/*.d.ts",
         "mock/*.ts",
+        "vite.config.ts",
+        "auto-imports.d.ts",
+        "components.d.ts",
         "vite.config.ts"
     ],
     "exclude": ["node_modules", "dist", "**/*.js"]

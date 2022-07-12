@@ -1,23 +1,146 @@
-@import "./transition.scss";
-@import "./element-plus.scss";
+@import './transition.scss';
+@import './element-plus.scss';
 
 body {
-  width: 100%;
-  height: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizelegibility;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+    font-family: '微软雅黑', Arial, sans-serif, 'Helvetica Neue', Helvetica, 'PingFang SC',
+        'Hiragino Sans GB', 'Microsoft YaHei';
+    font-size: 12px;
 }
 
 html {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 #app {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
+    min-width: 1440px;
+    overflow: auto;
+}
+
+/*滚动条的宽度*/
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+}
+
+/*滚动条的设置*/
+::-webkit-scrollbar-thumb {
+    background-color: #dddddd;
+    background-clip: padding-box;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-s-b {
+    justify-content: space-between;
+}
+
+.flex-s-a {
+    justify-content: space-around;
+}
+
+.flex-a-center {
+    align-items: center;
+    align-self: center;
+    align-content: center;
+}
+
+.flex-j-center {
+    justify-content: center;
+}
+
+.flex-a-center {
+    align-self: center;
+    align-content: center;
+}
+
+.flex-a-end {
+    align-self: flex-end;
+    align-content: flex-end;
+}
+
+.flex-self-end {
+    align-self: flex-end;
+}
+
+.flex-j-end {
+    justify-content: flex-end;
+}
+
+.flex-auto {
+    flex: auto;
+}
+
+.flex-one {
+    flex: 1;
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+.flex-none {
+    flex: none;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-not-shrink {
+    flex-shrink: 0;
+}
+
+.ml-6 {
+    margin-left: 6px;
+}
+
+// 搜索
+.search-item {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 3px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    flex-basis: 250px;
+
+    .search-name {
+        width: 72px;
+        flex-shrink: 0;
+        margin-right: 6px;
+        text-align: left;
+    }
+
+    > div {
+        flex-basis: 172px;
+        flex-shrink: 0;
+        flex-grow: 1;
+    }
 }

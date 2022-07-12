@@ -2,18 +2,18 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import NProgress from '@/utils/progress'
 import { toRouteType } from './types'
 
-import errorRouter from './modules/error'
+import baseRouter from './modules/base'
 
 const routes: RouteRecordRaw[] = [
     {
-        path: '/',
+        path: '/login',
         component: () => import('../views/login/LoginPage.vue'),
     },
     {
-        path: '/console',
+        path: '/',
         component: () => import('@/layout/Index.vue'),
     },
-    errorRouter,
+    baseRouter,
 ]
 const router = createRouter({
     history: createWebHistory(),
@@ -22,7 +22,7 @@ const router = createRouter({
 })
 router.addRoute({
     path: '/:pathMatch(.*)',
-    redirect: '/error/404',
+    redirect: '/404',
 })
 router.beforeEach((to: toRouteType, _from, next) => {
     NProgress.start()
