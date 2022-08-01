@@ -2,9 +2,9 @@
     <section class="left-menu">
         <el-menu
             class="el-menu-vertical"
-            active-text-color="#4698EB"
-            background-color="#575966"
-            text-color="#fff"
+            active-text-color="#386CE2"
+            background-color="#FFFFFF"
+            text-color="#787878"
             :default-active="$route.path"
             router
         >
@@ -33,11 +33,26 @@ defineOptions({
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: rgb(87, 89, 102);
+    background-color: #ffffff;
     flex-shrink: 0;
+    width: 220px;
+}
+
+.menu-title {
+    margin-left: 10px;
 }
 
 :deep(.el-menu) {
     border-right: none;
+}
+
+.el-menu-item {
+    &.is-active {
+        background-color: #f0f2fc;
+    }
+
+    &:hover {
+        --el-menu-hover-bg-color: #f0f2fc;
+    }
 }
 </style>

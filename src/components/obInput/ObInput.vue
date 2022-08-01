@@ -27,9 +27,9 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 // 输入更新值
-const updateVal = (val: string) => {
+const updateVal = ({ value }) => {
     //获取到input元素里面的值，
-    let targetVal = val.trim()
+    let targetVal = value.trim()
     if (props.typeValue) {
         targetVal = setValue(targetVal, props.typeValue)
     }
@@ -37,18 +37,18 @@ const updateVal = (val: string) => {
     emit('update:modelValue', targetVal)
 }
 // 失去交点或者回车时判断值
-const changeVal = val => {
+const changeVal = ({ value }) => {
     if (['int', 'number'].includes(props.typeValue)) {
-        if (!isEmpty(props.minValue) && Number(val) <= Number(props.minValue)) {
+        if (!isEmpty(props.minValue) && Number(value) <= Number(props.minValue)) {
             emit('update:modelValue', Number(props.minValue))
             return
         }
-        if (!isEmpty(props.maxValue) && Number(val) > Number(props.maxValue)) {
+        if (!isEmpty(props.maxValue) && Number(value) > Number(props.maxValue)) {
             emit('update:modelValue', Number(props.maxValue))
             return
         }
         // 发送事件和值
-        emit('update:modelValue', Number(val))
+        emit('update:modelValue', Number(value))
     }
 }
 </script>

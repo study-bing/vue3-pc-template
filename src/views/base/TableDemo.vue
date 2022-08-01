@@ -1,18 +1,34 @@
 <template>
-    <ob-tabs :tabList="tabList" />
-    <ob-table-page :getTableUrl="userList">
+    <ob-table-page :getTableUrl="userList" pageName="测试列表">
         <template #search>
             <div class="search-item">
-                <p class="search-name">设备所属产品</p>
+                <p class="search-name">设备所属产品：</p>
+                <ob-input suffix="ios-search" placeholder="用户名/账户" />
+            </div>
+            <div class="search-item">
+                <p class="search-name">设备所属产品：</p>
+                <ob-input suffix="ios-search" placeholder="用户名/账户" />
+            </div>
+            <div class="search-item">
+                <p class="search-name">设备所属产品：</p>
+                <ob-input suffix="ios-search" placeholder="用户名/账户" />
+            </div>
+            <div class="search-item">
+                <p class="search-name">设备所属产品：</p>
+                <ob-input suffix="ios-search" placeholder="用户名/账户" />
+            </div>
+            <div class="search-item">
+                <p class="search-name">设备所属产品：</p>
                 <ob-input suffix="ios-search" placeholder="用户名/账户" />
             </div>
         </template>
         <template #btn>
-            <svg-icon name="add" width="28" height="28" />
-            <svg-icon name="export" width="28" height="28" class="ml-6" />
+            <el-button type="primary" class="ml-10">新增报备</el-button>
+            <el-button type="primary" class="ml-10">批量审批</el-button>
+            <el-button class="import-button">批量撤销</el-button>
         </template>
         <template #table="{ tableData }">
-            <vxe-table border :data="tableData" height="auto">
+            <vxe-table :data="tableData" height="auto">
                 <vxe-column type="seq" width="60" />
                 <vxe-column field="fileName" title="自定义插槽模板">
                     <template #default="{ row }">
@@ -27,10 +43,4 @@
 
 <script setup lang="ts">
 import { userList } from '@api/user/user'
-
-const tabList = ref([
-    { value: 1, name: '监测类型' },
-    { value: 2, name: '设备状态定义', noShow: false },
-    { value: 3, name: '指令定义', noShow: true },
-])
 </script>

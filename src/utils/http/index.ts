@@ -50,7 +50,7 @@ class PureHttp {
                     return $config
                 }
                 const token =
-                    'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLljoLllYYxIiwiZmlyZWZseSI6IjFwYTV0dCIsImV4cCI6MTY1NzYyNjk0OCwiaWF0IjoxNjU3NTkwOTQ4fQ.yDhK0Ic38WQ9P2AAB9mfTpDScTHVF6t6QsieSco_BQgDvzkn0Sx08n7CCU2FwMD6AQ1tt1sZ3dPNYk_a6i8NRA'
+                    'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLljoLllYYxIiwiZmlyZWZseSI6ImZjcTdqciIsImV4cCI6MTY1OTM1Nzc3MiwiaWF0IjoxNjU5MzIxNzcyfQ.zE4lK_WrwhKjSd3Df77TWIOw03tRYuH5BQv30cUgA7bB2lD2rXgpm-hSc2T7SMmNwCR-7uUoeV1p4tqRzkQEkw'
                 if (token) {
                     config.headers['Authorization'] = `Bearer ${token}`
                     return $config

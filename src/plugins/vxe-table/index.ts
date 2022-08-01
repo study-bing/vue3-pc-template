@@ -50,21 +50,21 @@ VXETable.setup({
 })
 // 全局默认参数
 VXETable.setup({
-    size: 'mini',
+    size: 'medium',
     version: 0,
     zIndex: 1002,
     table: {
-        size: 'mini',
+        size: 'medium',
         // 自动监听父元素的变化去重新计算表格
         autoResize: true,
         // 鼠标移到行是否要高亮显示
         highlightHoverRow: true,
-        stripe: true,
+        // stripe: true,
         align: 'center',
-        height: 'atuo',
+        border: false,
     },
     pager: {
-        size: 'small',
+        size: 'medium',
         align: 'right',
         layouts: ['Sizes', 'PrevPage', 'Jump', 'PageCount', 'NextPage', 'Total'],
         pageSizes: [30, 50, 100],

@@ -38,8 +38,8 @@ defineOptions({
 }
 
 .router-content {
-    padding: 6px;
-    background-color: #e8ecf0;
+    padding: 16px;
+    background-color: #f7f8fc;
     flex: auto;
     overflow: auto;
     display: flex;
