@@ -114,7 +114,7 @@ onMounted(() => {
 .table-page-search {
     position: relative;
     background: #ffffff;
-    padding: 6px 0 16px;
+    padding: 6px 0 24px;
     display: flex;
     flex-shrink: 0;
 

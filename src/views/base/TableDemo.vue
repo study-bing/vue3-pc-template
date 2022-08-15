@@ -2,24 +2,12 @@
     <ob-table-page :getTableUrl="userList" pageName="测试列表">
         <template #search>
             <div class="search-item">
-                <p class="search-name">设备所属产品：</p>
-                <ob-input suffix="ios-search" placeholder="用户名/账户" />
+                <p class="search-name">测试1：</p>
+                <ob-input suffix="ios-search" placeholder="测试1" />
             </div>
             <div class="search-item">
-                <p class="search-name">设备所属产品：</p>
-                <ob-input suffix="ios-search" placeholder="用户名/账户" />
-            </div>
-            <div class="search-item">
-                <p class="search-name">设备所属产品：</p>
-                <ob-input suffix="ios-search" placeholder="用户名/账户" />
-            </div>
-            <div class="search-item">
-                <p class="search-name">设备所属产品：</p>
-                <ob-input suffix="ios-search" placeholder="用户名/账户" />
-            </div>
-            <div class="search-item">
-                <p class="search-name">设备所属产品：</p>
-                <ob-input suffix="ios-search" placeholder="用户名/账户" />
+                <p class="search-name">测试2：</p>
+                <ob-input suffix="ios-search" placeholder="测试2" />
             </div>
         </template>
         <template #btn>
