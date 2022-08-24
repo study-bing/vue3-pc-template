@@ -5,7 +5,8 @@ import NProgress from '../progress'
 import { loadEnv } from '@build/index'
 // import { useUserStoreHook } from '@/store/modules/user'
 import { warnMessage } from '@/utils/message'
-
+import { storageLocal } from '@/utils/storage'
+import router from '@/router'
 // 加载环境变量 VITE_PROXY_DOMAIN（开发环境）  VITE_PROXY_DOMAIN_REAL（打包后的线上环境）
 const { VITE_PROXY_DOMAIN, VITE_PROXY_DOMAIN_REAL } = loadEnv()
 
@@ -49,10 +50,9 @@ class PureHttp {
                     PureHttp.initConfig.beforeRequestCallback($config)
                     return $config
                 }
-                const token =
-                    'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLljoLllYYxIiwiZmlyZWZseSI6ImZjcTdqciIsImV4cCI6MTY1OTM1Nzc3MiwiaWF0IjoxNjU5MzIxNzcyfQ.zE4lK_WrwhKjSd3Df77TWIOw03tRYuH5BQv30cUgA7bB2lD2rXgpm-hSc2T7SMmNwCR-7uUoeV1p4tqRzkQEkw'
+                const token = storageLocal.getItem('token')
                 if (token) {
-                    config.headers['Authorization'] = `Bearer ${token}`
+                    config.headers['Authorization'] = `${token}`
                     return $config
                 } else {
                     return $config
@@ -90,10 +90,13 @@ class PureHttp {
                     const responseCode = response.status
                     // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
                     // 否则的话抛出错误
-                    if (responseCode === 200) {
-                        return Promise.resolve(response.data)
+                    if (
+                        responseCode === 200 &&
+                        (response.data?.code === 200 || !response.data?.code)
+                    ) {
+                        return Promise.resolve(response.data?.data)
                     } else {
-                        warnMessage(response.data.hint || response.data.message)
+                        warnMessage(response.data.msg || response.data.message)
                         return Promise.reject(response.data)
                     }
                 }
@@ -131,6 +134,11 @@ class PureHttp {
                     resolve(response)
                 })
                 .catch(error => {
+                    if (error?.response?.status === 401) {
+                        storageLocal.removeItem('token')
+                        router.push('/login')
+                        return
+                    }
                     reject(error)
                 })
         })
