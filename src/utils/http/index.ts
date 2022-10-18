@@ -1,10 +1,9 @@
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { PureHttpError, RequestMethods, PureHttpResponse, PureHttpRequestConfig } from './types.d'
 import qs from 'qs'
-import NProgress from '../progress'
 import { loadEnv } from '@build/index'
 // import { useUserStoreHook } from '@/store/modules/user'
-import { warnMessage } from '@/utils/message'
+import { errorMessage } from '@/utils/message'
 import { storageLocal } from '@/utils/storage'
 import router from '@/router'
 // 加载环境变量 VITE_PROXY_DOMAIN（开发环境）  VITE_PROXY_DOMAIN_REAL（打包后的线上环境）
@@ -39,8 +38,6 @@ class PureHttp {
         PureHttp.axiosInstance.interceptors.request.use(
             (config: PureHttpRequestConfig) => {
                 const $config = config
-                // 开启进度条动画
-                NProgress.start()
                 // 优先判断post/get等方法是否传入回掉，否则执行初始化设置等回掉
                 if (typeof config.beforeRequestCallback === 'function') {
                     config.beforeRequestCallback($config)
@@ -70,8 +67,6 @@ class PureHttp {
         instance.interceptors.response.use(
             (response: PureHttpResponse) => {
                 const $config = response.config
-                // 关闭进度条动画
-                NProgress.done()
                 // 优先判断post/get等方法是否传入回掉，否则执行初始化设置等回掉
                 if (typeof $config.beforeResponseCallback === 'function') {
                     $config.beforeResponseCallback(response)
@@ -96,7 +91,7 @@ class PureHttp {
                     ) {
                         return Promise.resolve(response.data?.data)
                     } else {
-                        warnMessage(response.data.msg || response.data.message)
+                        errorShow(response.data.msg || response.data.message)
                         return Promise.reject(response.data)
                     }
                 }
@@ -104,8 +99,9 @@ class PureHttp {
             (error: PureHttpError) => {
                 const $error = error
                 $error.isCancelRequest = Axios.isCancel($error)
-                // 关闭进度条动画
-                NProgress.done()
+                if ($error.response.data['msg'] || $error.response.data['message']) {
+                    errorShow($error.response.data['msg'] || $error.response.data['message'])
+                }
                 // 所有的响应异常 区分来源为取消请求/非取消请求
                 return Promise.reject($error)
             }
@@ -154,5 +150,13 @@ class PureHttp {
         return this.request<P>('get', url, params, config)
     }
 }
-
+function errorShow(msg) {
+    if (msg !== sessionStorage.getItem('errorTxt') && msg) {
+        errorMessage(msg)
+        sessionStorage.setItem('errorTxt', msg)
+        setTimeout(() => {
+            sessionStorage.removeItem('errorTxt')
+        }, 2000)
+    }
+}
 export const http = new PureHttp()

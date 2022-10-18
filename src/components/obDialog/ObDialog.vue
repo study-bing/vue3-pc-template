@@ -1,31 +1,43 @@
 <!--
  * @Author: linBin
  * @Date: 2022-07-11 09:32:28
- * @LastEditTime: 2022-07-11 15:06:25
+ * @LastEditTime: 2022-10-18 10:08:42
  * @LastEditors: linBin
  * @Description: 弹窗组件
- * @FilePath: /zzx-internet-web/src/components/global/obDialog/ObDialog.vue
+ * @FilePath: /vue3-pc-template/src/components/obDialog/ObDialog.vue
 -->
 
 <template>
-    <vxe-modal v-bind="$attrs" showFooter width="800">
+    <el-dialog
+        v-bind="$attrs"
+        :width="width"
+        :before-close="handleCancel"
+        :close-on-click-modal="false"
+    >
         <slot />
         <template #footer>
-            <span class="dialog-footer">
-                <el-button @click="handleCancel">{{ CancelText }}</el-button>
-                <el-button type="primary" @click="handleConfirm">{{ ConfirmText }}</el-button>
+            <span class="dialog-footer" v-if="!selfFooter">
+                <el-button @click="handleCancel" :loading="loading">{{ cancelText }}</el-button>
+                <el-button type="primary" @click="handleConfirm" :loading="loading">
+                    {{ confirmText }}
+                </el-button>
             </span>
             <slot name="footer" />
         </template>
-    </vxe-modal>
+    </el-dialog>
 </template>
 <script setup lang="ts">
 // https://vxetable.cn/#/modal/api 文档链接
 import { propTypes } from '@utils/propTypes'
 defineProps({
-    ConfirmText: propTypes.string.def('确定'),
-    CancelText: propTypes.string.def('取消'),
+    confirmText: propTypes.string.def('确定'),
+    cancelText: propTypes.string.def('取消'),
     selfFooter: propTypes.bool.def(false),
+    width: {
+        type: [String, Number],
+        default: '472px',
+    },
+    loading: propTypes.bool.def(false),
 })
 const emit = defineEmits(['handleCancel', 'handleConfirm'])
 // 取消函数

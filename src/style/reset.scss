@@ -6,10 +6,14 @@
 *,
 ::before,
 ::after {
-    box-sizing: border-box; /* 1 */
-    border-width: 0; /* 2 */
-    border-style: solid; /* 2 */
-    border-color: currentColor; /* 2 */
+    box-sizing: border-box;
+    /* 1 */
+    border-width: 0;
+    /* 2 */
+    border-style: solid;
+    /* 2 */
+    border-color: currentColor;
+    /* 2 */
 }
 
 /*
@@ -20,12 +24,20 @@
 */
 
 html {
-    line-height: 1.5; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-    -moz-tab-size: 4; /* 3 */
-    tab-size: 4; /* 3 */
-    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
-        '微软雅黑', Arial, sans-serif;
+    line-height: 1.5;
+    /* 1 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
+    -moz-tab-size: 4;
+    /* 3 */
+    tab-size: 4;
+    font-family: '微软雅黑', Arial, sans-serif, 'Helvetica Neue', Helvetica, 'PingFang SC',
+        'PingFang SC-Regular', 'Hiragino Sans GB', 'Microsoft YaHei';
+    font-size: 14px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    color: #303030;
 }
 
 /*
@@ -34,8 +46,15 @@ html {
 */
 
 body {
-    margin: 0; /* 1 */
-    line-height: inherit; /* 2 */
+    margin: 0;
+    /* 1 */
+    line-height: inherit;
+    /* 2 */
+    width: 100%;
+    height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
 }
 
 /*
@@ -45,9 +64,12 @@ body {
 */
 
 hr {
-    height: 0; /* 1 */
-    color: inherit; /* 2 */
-    border-top-width: 1px; /* 3 */
+    height: 0;
+    /* 1 */
+    color: inherit;
+    /* 2 */
+    border-top-width: 1px;
+    /* 3 */
 }
 
 /*
@@ -100,8 +122,10 @@ kbd,
 samp,
 pre {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-        'Courier New', monospace; /* 1 */
-    font-size: 1em; /* 2 */
+        'Courier New', monospace;
+    /* 1 */
+    font-size: 1em;
+    /* 2 */
 }
 
 /*
@@ -139,9 +163,12 @@ sup {
 */
 
 table {
-    text-indent: 0; /* 1 */
-    border-color: inherit; /* 2 */
-    border-collapse: collapse; /* 3 */
+    text-indent: 0;
+    /* 1 */
+    border-color: inherit;
+    /* 2 */
+    border-collapse: collapse;
+    /* 3 */
 }
 
 /*
@@ -155,12 +182,18 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: inherit; /* 1 */
-    font-size: 100%; /* 1 */
-    line-height: inherit; /* 1 */
-    color: inherit; /* 1 */
-    margin: 0; /* 2 */
-    padding: 0; /* 3 */
+    font-family: inherit;
+    /* 1 */
+    font-size: 100%;
+    /* 1 */
+    line-height: inherit;
+    /* 1 */
+    color: inherit;
+    /* 1 */
+    margin: 0;
+    /* 2 */
+    padding: 0;
+    /* 3 */
 }
 
 /*
@@ -170,20 +203,6 @@ Remove the inheritance of text transform in Edge and Firefox.
 button,
 select {
     text-transform: none;
-}
-
-/*
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Remove default button styles.
-*/
-
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-    -webkit-appearance: button; /* 1 */
-    background-color: transparent; /* 2 */
-    background-image: none; /* 2 */
 }
 
 /*
@@ -225,8 +244,10 @@ Correct the cursor style of increment and decrement buttons in Safari.
 */
 
 [type='search'] {
-    -webkit-appearance: textfield; /* 1 */
-    outline-offset: -2px; /* 2 */
+    -webkit-appearance: textfield;
+    /* 1 */
+    outline-offset: -2px;
+    /* 2 */
 }
 
 /*
@@ -243,8 +264,10 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 ::-webkit-file-upload-button {
-    -webkit-appearance: button; /* 1 */
-    font: inherit; /* 2 */
+    -webkit-appearance: button;
+    /* 1 */
+    font: inherit;
+    /* 2 */
 }
 
 /*
@@ -301,17 +324,6 @@ textarea {
 }
 
 /*
-1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-2. Set the default placeholder color to the user's configured gray 400 color.
-*/
-
-input::placeholder,
-textarea::placeholder {
-    opacity: 1; /* 1 */
-    color: #9ca3af; /* 2 */
-}
-
-/*
 Set the default cursor for buttons.
 */
 
@@ -341,8 +353,10 @@ audio,
 iframe,
 embed,
 object {
-    display: block; /* 1 */
-    vertical-align: middle; /* 2 */
+    display: block;
+    /* 1 */
+    vertical-align: middle;
+    /* 2 */
 }
 
 /*
@@ -371,12 +385,6 @@ label {
     font-weight: 700;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
 a:focus,
 a:active {
     outline: none;
@@ -403,4 +411,16 @@ div:focus {
         clear: both;
         height: 0;
     }
+}
+
+input::-webkit-input-placeholder {
+    color: #9ea0a4 !important;
+}
+
+input::-moz-placeholder {
+    color: #9ea0a4 !important;
+}
+
+input::-ms-input-placeholder {
+    color: #9ea0a4 !important;
 }

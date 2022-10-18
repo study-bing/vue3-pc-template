@@ -1,0 +1,232 @@
+:root {
+    --el-color-primary: #4378ff;
+    --el-color-primary-light-3: #729eff;
+    --el-color-primary-dark-2: #2659cc;
+    --el-color-primary-light-5: #9bbaff;
+    --el-border-color: #dddddd;
+    --el-disabled-bg-color: #dee0e4;
+    --el-color-warning: #ffa96a;
+    --el-messagebox-color: #ffa96a;
+}
+
+#app,
+.app {
+    // !btn
+    .el-button {
+        padding-left: 16px;
+        padding-right: 16px;
+        color: #787878;
+        --el-button-bg-color: #fafafa;
+        --el-button-hover-bg-color: #f4f4f4;
+        --el-button-hover-border-color: #eeeeee;
+        --el-button-active-border-color: #dddddd;
+        --el-button-active-bg-color: #dddddd;
+        --el-button-disabled-bg-color: #f5f5f5;
+        --el-button-disabled-border-color: #eeeeee;
+        --el-button-disabled-text-color: #acacac;
+    }
+
+    .el-button--primary {
+        color: #ffffff;
+        --el-button-bg-color: #4378ff;
+        --el-button-hover-bg-color: #729eff;
+        --el-button-hover-border-color: #729eff;
+        --el-button-active-border-color: #2659cc;
+        --el-button-active-bg-color: #2659cc;
+        --el-button-disabled-bg-color: #9bbaff;
+        --el-button-disabled-border-color: #9bbaff;
+        --el-button-disabled-text-color: #ffffff;
+    }
+
+    .el-button:focus {
+        border-color: var(--el-button-border-color);
+        background-color: var(--el-button-bg-color);
+    }
+
+    .el-button:hover {
+        border-color: var(--el-button-hover-border-color);
+        background-color: var(--el-button-hover-bg-color);
+    }
+    .el-button:focus-visible {
+        outline: none;
+    }
+    .el-button [class*='el-icon'] + span {
+        margin-left: 4px;
+    }
+
+    // dialog
+    .el-dialog {
+        margin-top: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 8px;
+    }
+
+    .el-dialog__header {
+        margin-right: 0;
+        padding: 0 24px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        border-radius: 8px 8px 0 0;
+        color: #303030;
+        font-weight: 600;
+        font-size: 16px;
+
+        .el-dialog__headerbtn {
+            top: 5px;
+
+            .el-dialog__close {
+                color: #51565e;
+            }
+        }
+    }
+
+    .el-dialog__body {
+        padding: 0 24px;
+        max-height: 600px;
+        overflow: auto;
+    }
+
+    .el-dialog__footer {
+        padding: 24px;
+    }
+
+    .el-button + .el-button {
+        margin-left: 8px;
+    }
+
+    // !input
+    .el-textarea,
+    .el-input {
+        --el-input-bg-color: #f2f3f5;
+        --el-input-text-color: --el-text-color-primary;
+    }
+
+    .el-textarea__inner,
+    .el-input__wrapper {
+        box-shadow: none !important;
+    }
+
+    // !select
+    .el-select__icon {
+        color: #aeb3ba;
+    }
+
+    // !el-message-box
+    &.el-message-box {
+        border-radius: 8px;
+        padding-bottom: 0;
+    }
+
+    .el-message-box__header {
+        padding: 20px 24px;
+
+        .el-message-box__title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #303030;
+            line-height: 24px;
+        }
+    }
+
+    .el-message-box__content {
+        padding: 0 24px 0 64px;
+
+        .el-message-box__message {
+            font-size: 14px;
+            font-family: PingFang SC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #303030;
+            line-height: 22px;
+            padding-left: 28px;
+        }
+
+        .el-message-box__status {
+            font-size: 20px !important;
+        }
+    }
+
+    .el-message-box__btns {
+        padding: 24px;
+    }
+
+    // checkbox
+    .el-checkbox {
+        --el-checkbox-input-height: 16px;
+        --el-checkbox-input-width: 16px;
+        --el-checkbox-border-radius: var(--el-border-radius-base);
+    }
+
+    .el-checkbox__inner::after {
+        left: 5px;
+        top: 2px;
+    }
+
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
+        top: 6px;
+    }
+
+    .el-radio-button__inner {
+        --el-fill-color-blank: #f2f3f5;
+        border: none;
+    }
+
+    // 日期选择器
+    .el-date-editor {
+        background-color: #f2f3f5;
+        min-width: 240px;
+
+        .el-range-input {
+            font-size: 14px;
+            font-family: PingFang SC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #303030;
+            line-height: 22px;
+        }
+
+        .el-range__icon {
+            margin: 0 5px;
+        }
+    }
+
+    // !table
+    .vxe-body--expanded-column {
+        background-color: #fafafa;
+
+        .table-child-box {
+            margin: 24px;
+        }
+    }
+
+    // .el-drawer__header
+    .el-drawer__title {
+        font-size: 16px;
+        color: #303030;
+        font-weight: 600;
+    }
+
+    .el-drawer {
+        --el-drawer-padding-primary: 20px 24px;
+    }
+
+    .el-drawer__header {
+        margin-bottom: 0;
+    }
+
+    .el-drawer__body {
+        padding-bottom: 0;
+    }
+}
+
+.el-dialog__title {
+    font-size: 16px !important;
+}
+
+.el-range-input {
+    width: 45% !important;
+}
+
+.el-input__count {
+    background-color: unset !important;
+}

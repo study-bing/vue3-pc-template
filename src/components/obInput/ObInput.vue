@@ -1,5 +1,5 @@
 <template>
-    <vxe-input :model-value="modelValue" v-bind="$attrs" @input="updateVal" @change="changeVal" />
+    <el-input :model-value="modelValue" v-bind="$attrs" @input="updateVal" @change="changeVal" />
 </template>
 <script setup lang="ts">
 import { setValue, isEmpty } from './setValue'
@@ -27,7 +27,7 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 // 输入更新值
-const updateVal = ({ value }) => {
+const updateVal = value => {
     //获取到input元素里面的值，
     let targetVal = value.trim()
     if (props.typeValue) {
@@ -37,18 +37,18 @@ const updateVal = ({ value }) => {
     emit('update:modelValue', targetVal)
 }
 // 失去交点或者回车时判断值
-const changeVal = ({ value }) => {
+const changeVal = value => {
     if (['int', 'number'].includes(props.typeValue)) {
         if (!isEmpty(props.minValue) && Number(value) <= Number(props.minValue)) {
-            emit('update:modelValue', Number(props.minValue))
+            emit('update:modelValue', value === '' ? '' : Number(props.minValue))
             return
         }
         if (!isEmpty(props.maxValue) && Number(value) > Number(props.maxValue)) {
-            emit('update:modelValue', Number(props.maxValue))
+            emit('update:modelValue', value === '' ? '' : Number(props.maxValue))
             return
         }
         // 发送事件和值
-        emit('update:modelValue', Number(value))
+        emit('update:modelValue', value === '' ? '' : Number(value))
     }
 }
 </script>
