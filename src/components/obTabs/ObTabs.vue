@@ -1,5 +1,5 @@
 <template>
-    <div class="ob-tabs">
+    <div class="ob-tabs" :class="{ 'in-page': isInPage, background: background }">
         <span
             v-for="(item, index) in tabList"
             :key="index"
@@ -7,7 +7,6 @@
             :class="{
                 'tab-active': tabIndex === item.value,
                 disable: item.disable,
-                'one-tab': oneTab,
             }"
             class="tab-space"
             v-show="!item.noShow"
@@ -18,23 +17,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 defineOptions({
     name: 'ObTabs',
 })
 type tab = {
     name: string
     value: string | number
-    noShow?: unknown // 是否不显示
-    disable?: unknown // 是否禁用
+    noShow?: boolean // 是否不显示
+    disable?: boolean // 是否禁用
 }
-const props = defineProps<{ tabList: tab[]; defaultActive?: number | string }>()
-const oneTab = computed(() => {
-    let list = props.tabList.filter(el => {
-        return !el.noShow
-    })
-    return list.length === 1
-})
+const props = defineProps<{
+    tabList: tab[]
+    defaultActive?: number | string
+    isInPage?: boolean
+    background?: boolean
+}>()
+
 const tabIndex = ref<string | number>()
 watch(
     () => props.defaultActive,
@@ -69,44 +68,119 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .ob-tabs {
-    padding-bottom: 6px;
     flex-shrink: 0;
+    height: 50px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
 
     .tab-space {
-        height: 28px;
-        border: 1px solid #cbd5dd;
-        border-right: none;
-        padding: 7px 12px;
-        line-height: 28px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0 24px;
         cursor: pointer;
-        color: #333333;
-        background-color: #ffffff;
-        font-size: 12px;
-
-        &:first-child {
-            border-radius: 2px 0px 0px 2px;
-        }
-
-        &:last-child {
-            border-right: 1px solid #cbd5dd;
-            border-radius: 0px 2px 2px 0px;
-        }
-
-        &.one-tab {
-            border-radius: 2px;
-        }
+        color: #6b6d72;
+        font-size: 14px;
     }
 
     .tab-active {
-        border: 1px solid #4698eb;
-        color: #ffffff;
-        background-color: #4698eb;
+        position: relative;
+        color: #3d6deb;
+        font-size: 16px;
+        font-weight: 500;
+
+        &::after {
+            position: absolute;
+            content: '';
+            display: inline-block;
+            width: 26px;
+            height: 2px;
+            background-color: #3d6deb;
+            bottom: 0;
+            left: 50%;
+            margin-left: -13px;
+        }
     }
 
     .disable {
         background-color: #eeeeee;
-        border-radius: 2px 0px 0px 2px;
         color: #acacac;
+    }
+}
+
+.in-page {
+    height: 48px;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #eeeeee;
+    margin: 16px 16px 0;
+
+    .tab-space {
+        padding: 0;
+        margin-left: 48px;
+    }
+
+    .tab-active {
+        color: #4378ff;
+        font-size: 14px;
+
+        &::after {
+            position: absolute;
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 2px;
+            background-color: #4378ff;
+            bottom: 0;
+            right: 0;
+            margin-left: 0;
+            left: 0;
+        }
+    }
+}
+
+.background {
+    border-radius: 8px 8px 0 0;
+    height: 32px;
+    opacity: 1;
+
+    .tab-space {
+        position: relative;
+        width: 50px;
+        background: #f2f3f5;
+        padding: 5px 3px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+
+        &:nth-child(n + 2)::before {
+            content: '';
+            position: absolute;
+            left: 0px;
+            width: 1px;
+            height: 10px;
+            background-color: #d9d9d9;
+        }
+
+        &:first-child {
+            border-radius: 4px 0px 0px 4px;
+        }
+
+        &:last-child {
+            border-radius: 0px 4px 4px 0px;
+        }
+    }
+
+    .tab-active {
+        color: #ffffff;
+        font-size: 14px;
+        background: #4378ff;
+
+        &:nth-child(n + 2)::before {
+            content: '';
+            position: absolute;
+            background-color: #4378ff;
+        }
     }
 }
 </style>
