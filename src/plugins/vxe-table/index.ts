@@ -4,8 +4,6 @@ import {
     // 核心
     VXETable,
     // 表格功能
-    Header,
-    Footer,
     Icon,
     Filter,
     Edit,
@@ -74,9 +72,7 @@ VXETable.setup({
 })
 
 export function useTable(app: App) {
-    app.use(Header)
-        .use(Footer)
-        .use(Icon)
+    app.use(Icon)
         .use(Filter)
         .use(Edit)
         .use(Menu)

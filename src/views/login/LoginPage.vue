@@ -14,11 +14,16 @@
                         @keyup.enter="submitForm()"
                     />
                 </el-form-item>
-                <div class="login-btn">
-                    <el-button type="primary" @click="submitForm()">登录</el-button>
-                </div>
-                <p class="login-tips">Tips : 用户名和密码随便填。</p>
             </el-form>
+            <div class="login-btn">
+                <el-button type="primary" @click="submitForm()">登录</el-button>
+            </div>
+            <p class="login-tips">Tips : 用户名和密码随便填。</p>
+            <div @click="changeLang('en')">English</div>
+            <div @click="changeLang('zh')">中文</div>
+            <div>
+                {{ $t('login.userName') }}
+            </div>
         </div>
     </div>
 </template>
@@ -26,7 +31,15 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { successMessage } from '@/utils/message'
+import { useI18n } from 'vue-i18n'
 
+const { t, locale } = useI18n()
+
+const changeLang = (lang: string) => {
+    locale.value = lang
+    localStorage.setItem('lang', lang)
+    console.log(t('login.userName'))
+}
 const router = useRouter()
 const param = reactive({
     username: 'admin',
@@ -77,12 +90,12 @@ const submitForm = () => {
     width: 350px;
     margin: -190px 0 0 -175px;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgb(255 255 255 / 30%);
     overflow: hidden;
 }
 
 .ms-content {
-    padding: 30px 30px;
+    padding: 30px;
 }
 
 .login-btn {

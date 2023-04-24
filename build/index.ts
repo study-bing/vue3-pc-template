@@ -32,7 +32,7 @@ const regExps = (value: string, reg: string): string => {
 }
 
 // 环境变量
-const loadEnv = (): ViteEnv => {
+const loadEnv = () => {
     return import.meta.env
 }
 

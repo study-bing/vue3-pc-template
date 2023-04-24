@@ -15,10 +15,8 @@ import { successMessage } from '@utils/message'
 let svgList = ref([])
 const { copy } = useClipboard()
 const getSvg = urls => {
-    console.log(urls)
     let reg = /(.+).svg$/
     return urls.map(el => {
-        console.log(el)
         let content = el.split('/').pop()
         return content.match(reg)[1]
     })
@@ -32,7 +30,6 @@ const copyHandle = svg => {
 onMounted(() => {
     let svgs = []
     const comContext = import.meta.globEager('../../assets/svg/**/*.svg')
-    console.log(comContext)
     Object.keys(comContext).forEach(com => {
         const mod = com
         const modList = Array.isArray(mod) ? [...mod] : [mod]

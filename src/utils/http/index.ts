@@ -99,7 +99,10 @@ class PureHttp {
             (error: PureHttpError) => {
                 const $error = error
                 $error.isCancelRequest = Axios.isCancel($error)
-                if ($error.response.data['msg'] || $error.response.data['message']) {
+                if (
+                    $error?.response?.data &&
+                    ($error?.response?.data['msg'] || $error?.response?.data['message'])
+                ) {
                     errorShow($error.response.data['msg'] || $error.response.data['message'])
                 }
                 // 所有的响应异常 区分来源为取消请求/非取消请求
