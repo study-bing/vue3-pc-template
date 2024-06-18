@@ -11,6 +11,21 @@ const baseRouter = {
     },
     children: [
         {
+            path: '/ImgList',
+            component: () => import('@/views/ImgList.vue'),
+            meta: {
+                title: '图片列表',
+            },
+        },
+        {
+            path: '/ImgSet',
+            component: () => import('@/views/ImgSet.vue'),
+            meta: {
+                title: '图片处理',
+                hasBack: true,
+            },
+        },
+        {
             path: '/403',
             name: '403',
             component: () => import('@/views/base/403.vue'),

@@ -1,11 +1,121 @@
-@import 'vxe-table/styles/variable.scss';
+// 导入主题变量，也可以重写主题变量
+@import 'vxe-table/styles/cssvar.scss';
+@import 'vxe-pc-ui/styles/cssvar.scss';
 // 修改样式变量
-$vxe-font-color: #333333;
-$vxe-table-header-background-color: #f4f7f9;
+$vxe-font-color: #303030;
+$vxe-table-font-color: $vxe-font-color;
+$vxe-table-header-background-color: #f2f3f5;
+$vxe-table-column-padding-default: 13px 0;
+$vxe-table-border-color: #eeeeee;
+$vxe-table-row-hover-background-color: #f3f9ff;
+$vxe-pager-perfect-button-background-color: #fff;
+
+.screen-table-page {
+    $vxe-table-row-hover-background-color: #062549;
+}
 
 // ...
 @import 'vxe-table/styles/modules.scss';
 
 i {
     border-color: initial;
+}
+
+#app {
+    $el-color-primary: #4378ff;
+
+    .vxe-table--header-wrapper {
+        background-color: #f2f3f5;
+        border-radius: 4px;
+    }
+
+    .vxe-header--column:first-child:not(.col--expand, .col--tree-node),
+    .vxe-body--column:first-child:not(.col--expand, .col--tree-node) {
+        .vxe-cell {
+            padding-left: 40px;
+        }
+    }
+
+    .vxe-table--expanded .vxe-icon--arrow-right {
+        width: 16px;
+        height: 16px;
+        color: #9ea0a4;
+    }
+
+    // 分页
+    .vxe-pager.is--background .vxe-pager--jump-prev:not(.is--disabled).is--active,
+    .vxe-pager.is--background .vxe-pager--num-btn:not(.is--disabled).is--active,
+    .vxe-pager.is--background .vxe-pager--jump-next:not(.is--disabled).is--active,
+    .vxe-pager.is--perfect .vxe-pager--jump-prev:not(.is--disabled).is--active,
+    .vxe-pager.is--perfect .vxe-pager--num-btn:not(.is--disabled).is--active,
+    .vxe-pager.is--perfect .vxe-pager--jump-next:not(.is--disabled).is--active {
+        background-color: $el-color-primary;
+        border-color: $el-color-primary;
+    }
+
+    .vxe-pager.is--background .vxe-pager--prev-btn,
+    .vxe-pager.is--background .vxe-pager--next-btn,
+    .vxe-pager.is--background .vxe-pager--jump-prev,
+    .vxe-pager.is--background .vxe-pager--num-btn,
+    .vxe-pager.is--background .vxe-pager--jump-next,
+    .vxe-pager.is--perfect .vxe-pager--prev-btn,
+    .vxe-pager.is--perfect .vxe-pager--next-btn,
+    .vxe-pager.is--perfect .vxe-pager--jump-prev,
+    .vxe-pager.is--perfect .vxe-pager--num-btn,
+    .vxe-pager.is--perfect .vxe-pager--jump-next {
+        border: 1px solid #dddddd;
+    }
+
+    .vxe-pager .vxe-pager--jump-prev.is--disabled,
+    .vxe-pager .vxe-pager--prev-btn.is--disabled,
+    .vxe-pager .vxe-pager--next-btn.is--disabled,
+    .vxe-pager .vxe-pager--jump-next.is--disabled,
+    .vxe-pager .vxe-pager--num-btn.is--disabled {
+        background-color: #f5f5f5;
+        color: #9ea0a4;
+    }
+
+    .vxe-table--render-default .vxe-table--border-line,
+    .vxe-table--render-default .vxe-body--expanded-column {
+        border-bottom: none !important;
+    }
+
+    .is--checked.vxe-custom--option .vxe-checkbox--icon:before,
+    .vxe-table--render-default .is--checked.vxe-cell--checkbox .vxe-checkbox--icon:before,
+    .is--checked.vxe-table--filter-option .vxe-checkbox--icon:before,
+    .is--checked.vxe-export--panel-column-option .vxe-checkbox--icon:before,
+    .is--indeterminate.vxe-custom--option .vxe-checkbox--icon:before,
+    .vxe-table--render-default .is--indeterminate.vxe-cell--checkbox .vxe-checkbox--icon:before,
+    .is--indeterminate.vxe-table--filter-option .vxe-checkbox--icon:before,
+    .is--indeterminate.vxe-export--panel-column-option .vxe-checkbox--icon:before {
+        border-color: #ffffff;
+        background-color: #ffffff;
+    }
+    .vxe-icon--caret-right:before {
+        width: 0.7em;
+        height: 0.7em;
+        border-width: 0.15em;
+        border-style: solid;
+        border-top-color: inherit;
+        border-right-color: inherit;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-radius: 0.15em;
+        top: 0.18em;
+        left: 0;
+        transform: rotate(45deg);
+        color: #9ea0a4;
+    }
+    .is--checked.vxe-table--filter-option .vxe-checkbox--icon,
+    .is--checked.vxe-export--panel-column-option .vxe-checkbox--icon,
+    .vxe-table--render-default .is--checked.vxe-cell--checkbox .vxe-checkbox--icon,
+    .is--checked.vxe-custom--option .vxe-checkbox--icon,
+    .is--checked.vxe-checkbox .vxe-checkbox--icon,
+    .is--indeterminate.vxe-table--filter-option .vxe-checkbox--icon,
+    .is--indeterminate.vxe-export--panel-column-option .vxe-checkbox--icon,
+    .vxe-table--render-default .is--indeterminate.vxe-cell--checkbox .vxe-checkbox--icon,
+    .is--indeterminate.vxe-custom--option .vxe-checkbox--icon,
+    .is--indeterminate.vxe-checkbox .vxe-checkbox--icon {
+        color: var(--el-color-primary);
+    }
 }

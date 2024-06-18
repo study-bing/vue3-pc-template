@@ -11,6 +11,7 @@ import { createStyleImportPlugin, VxeTableResolve } from 'vite-plugin-style-impo
 import svgLoader from 'vite-svg-loader'
 import { viteBuildInfo } from './info'
 import { visualizer } from 'rollup-plugin-visualizer'
+import { lazyImport, VxeResolver } from 'vite-plugin-lazy-import'
 
 export function getPluginsList() {
     const lifecycle = process.env.npm_lifecycle_event
@@ -52,6 +53,16 @@ export function getPluginsList() {
         }),
         // svg组件化支持
         svgLoader(),
+        lazyImport({
+            resolvers: [
+                VxeResolver({
+                    libraryName: 'vxe-table',
+                }),
+                VxeResolver({
+                    libraryName: 'vxe-pc-ui',
+                }),
+            ],
+        }),
         // 打包分析
         lifecycle === 'report'
             ? visualizer({ open: true, brotliSize: true, filename: 'report.html' })

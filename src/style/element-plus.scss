@@ -82,6 +82,10 @@
         }
     }
 
+    .el-dialog__title {
+        font-size: 16px;
+    }
+
     .el-dialog__body {
         padding: 0 24px;
         max-height: 600px;
@@ -103,9 +107,18 @@
         --el-input-text-color: --el-text-color-primary;
     }
 
-    .el-textarea__inner,
+    .el-select__wrapper {
+        --el-fill-color-blank: #f2f3f5;
+    }
+
+    .el-select__wrapper .el-textarea__inner,
     .el-input__wrapper {
         box-shadow: none !important;
+    }
+
+    // 文本域字数区域背景色
+    .el-input__count {
+        background-color: unset;
     }
 
     // !select
@@ -178,6 +191,7 @@
         min-width: 240px;
 
         .el-range-input {
+            width: 45%;
             font-size: 14px;
             font-family: PingFang SC-Regular, PingFang SC;
             font-weight: 400;
@@ -217,16 +231,182 @@
     .el-drawer__body {
         padding-bottom: 0;
     }
-}
+    // 轮播
+    .el-carousel__button {
+        border-radius: 11px 11px 11px 11px;
+        background-color: #4378ff;
+    }
+    .el-carousel__indicators--vertical {
+        .el-carousel__button {
+            width: 6px;
+            height: 10px;
+        }
+    }
+    .el-carousel__indicators--horizontal {
+        .el-carousel__button {
+            width: 10px;
+            height: 6px;
+        }
+    }
+    .el-carousel__indicator {
+        padding-right: 0;
+    }
 
-.el-dialog__title {
-    font-size: 16px !important;
-}
+    // !驾驶舱特殊化样式
+    .cookpit {
+        input::-webkit-input-placeholder {
+            color: #fff !important;
+        }
 
-.el-range-input {
-    width: 45% !important;
-}
+        input::-moz-placeholder {
+            color: #fff !important;
+        }
 
-.el-input__count {
-    background-color: unset !important;
+        input::-ms-input-placeholder {
+            color: #fff !important;
+        }
+        .el-select__icon {
+            color: #2a85d9;
+        }
+        .el-select__wrapper,
+        .el-input__wrapper {
+            background: #15487d;
+            border-radius: 4px;
+            border: 1px solid #0b57a6;
+            .el-input__inner {
+                color: #fff;
+            }
+        }
+        .el-dialog {
+            background: #032654;
+            border-radius: 8px;
+            border: 1px solid #4592dc;
+            .el-dialog__title,
+            .form-box .form-label,
+            .el-dialog__close {
+                color: #fff;
+            }
+            .dialog-footer {
+                .el-button:hover:not(.el-button--primary),
+                .el-button:not(.el-button--primary) {
+                    background-color: transparent;
+                    border: 1px solid #ace1ff;
+                    color: #ace1ff;
+                }
+            }
+        }
+        .el-message-box {
+            background-color: #032654;
+            border-color: #4592dc;
+            .el-message-box__title,
+            .el-message-box__message {
+                color: #fff;
+            }
+            .el-message-box__btns {
+                .el-button:hover:not(.el-button--primary),
+                .el-button:not(.el-button--primary) {
+                    background-color: transparent;
+                    border: 1px solid #ace1ff;
+                    color: #ace1ff;
+                }
+            }
+        }
+    }
+}
+.el-popper.is-light {
+    background: #ffffff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 12px;
+}
+.el-image-viewer__actions {
+    bottom: 110px !important;
+}
+.cookpit {
+    &.el-select__popper.el-popper {
+        background: #041c3d;
+        border-radius: 4px;
+        border: none;
+        border: #062549;
+    }
+    &.el-popper.is-light .el-popper__arrow::before {
+        background-color: #041c3d;
+    }
+    &.el-select__popper.el-popper .el-popper__arrow::before {
+        border: none;
+    }
+    .el-select-dropdown__item {
+        color: #fff;
+    }
+    .el-select-dropdown__item.selected,
+    .el-select-dropdown__item.hover,
+    .el-select-dropdown__item:hover,
+    .el-select-dropdown__item.hover,
+    .el-select-dropdown__item:hover {
+        background: #1b436f;
+        color: #52f4ff;
+    }
+}
+.cookpit-menu {
+    .el-menu--horizontal {
+        border: none;
+    }
+    &.is-light {
+        border: none !important;
+        background: #041c3d !important;
+    }
+    .el-menu--popup {
+        background: #041c3d;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        border: 1px solid #0b57a6;
+    }
+    .el-menu-item {
+        position: relative;
+        justify-content: center;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        &:hover {
+            color: #52f4ff !important;
+            background-color: rgba(27, 67, 111, 1) !important;
+        }
+        &.is-active {
+            border-bottom: none !important;
+            color: #52f4ff;
+            padding-bottom: 2px;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 50%;
+                height: 2px;
+                background: #52f4ff;
+                transform: translateX(50%);
+            }
+        }
+    }
+    .el-sub-menu__title {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+    .el-menu--popup {
+        min-width: 120px;
+    }
+}
+.screen-dialog {
+    .el-picker__popper.el-popper,
+    .el-date-table th,
+    .el-date-range-picker__content.is-left,
+    .el-picker-panel__footer,
+    .el-date-range-picker__time-header {
+        border-color: #2c4c7f;
+    }
+    .el-input__inner {
+        color: #fff;
+    }
+}
+.no-transform-dialog {
+    transform: none !important;
+    top: 10% !important;
 }

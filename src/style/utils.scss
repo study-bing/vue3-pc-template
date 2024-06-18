@@ -1,0 +1,191 @@
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-s-b {
+    justify-content: space-between;
+}
+
+.flex-s-a {
+    justify-content: space-around;
+}
+
+.flex-a-center {
+    align-items: center;
+    align-content: center;
+}
+
+.flex-j-center {
+    justify-content: center;
+}
+
+.flex-a-end {
+    align-self: flex-end;
+    align-content: flex-end;
+}
+
+.flex-self-end {
+    align-self: flex-end;
+}
+
+.flex-j-end {
+    justify-content: flex-end;
+}
+
+.flex-auto {
+    flex: auto;
+}
+
+.flex-one {
+    flex: 1;
+}
+
+.flex-center {
+    @extend .flex;
+    @extend .flex-a-center;
+    @extend .flex-j-center;
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.flex-none {
+    flex: none;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-not-shrink {
+    flex-shrink: 0;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.c-p {
+    cursor: pointer;
+}
+.ml-6 {
+    margin-left: 6px;
+}
+
+.ml-4 {
+    margin-left: 4px;
+}
+
+.ml-8 {
+    margin-left: 8px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+.ml-16 {
+    margin-left: 16px;
+}
+.ml-24 {
+    margin-left: 24px;
+}
+.mr-8 {
+    margin-right: 8px;
+}
+
+.mr-16 {
+    margin-right: 16px;
+}
+
+.mt-8 {
+    margin-top: 8px;
+}
+
+.mt-24 {
+    margin-top: 24px;
+}
+.mb-16 {
+    margin-bottom: 16px;
+}
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+// 隐藏高德地图标志
+.amap-logo {
+    display: none !important;
+}
+.w-300 {
+    width: 300px !important;
+}
+.w-380 {
+    width: 380px !important;
+}
+.w-240 {
+    width: 240px !important;
+}
+.w-500 {
+    width: 500px !important;
+}
+// 字体
+.fs-bold {
+    font-weight: 500;
+}
+.fs-12 {
+    font-size: 12px;
+}
+.fs-14 {
+    font-size: 14px;
+}
+
+// 大屏退出登录
+.screen-logout {
+    cursor: pointer;
+    &:hover {
+        color: var(--el-color-primary);
+    }
+}
+
+// 无数据占位图样式
+.no-img-box {
+    width: 100%;
+    height: 100%;
+
+    .no-text {
+        color: #303030;
+        margin-top: 10px;
+        font-size: 14px;
+        text-align: center;
+    }
+}
+.w-p-100 {
+    width: 100%;
+}
+
+.d-i-b {
+    display: inline-block;
+}

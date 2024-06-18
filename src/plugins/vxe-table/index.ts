@@ -1,109 +1,92 @@
 import { App } from 'vue'
 import XEUtils from 'xe-utils'
 import {
-    // 核心
-    VXETable,
-    // 表格功能
-    Icon,
-    Filter,
-    Edit,
-    Menu,
-    Export,
-    Keyboard,
-    Validator,
-    // 可选组件
-    Column,
-    Colgroup,
-    Grid,
-    Tooltip,
-    Toolbar,
-    Pager,
-    Form,
-    FormItem,
-    FormGather,
-    Checkbox,
-    CheckboxGroup,
-    Radio,
-    RadioGroup,
-    RadioButton,
-    Switch,
-    Input,
-    Select,
-    Optgroup,
-    Option,
-    Textarea,
-    Button,
-    Modal,
-    List,
-    Pulldown,
-    // 表格
-    Table,
+    VxeUI,
+    VxeTable,
+    VxeColumn,
+    // VxeColgroup,
+    // VxeGrid,
+    // VxeToolbar
 } from 'vxe-table'
-import zhCN from 'vxe-table/es/locale/lang/zh-CN'
+import {
+    // VxeButton,
+    // VxeButtonGroup,
+    // VxeCheckbox,
+    // VxeCheckboxGroup,
+    // VxeFormItem,
+    // VxeForm,
+    VxeIcon,
+    VxeLoading,
+    // VxeInput,
+    // VxeModal,
+    // VxePager,
+    // VxePulldown,
+    // VxeRadio,
+    // VxeRadioButton,
+    // VxeRadioGroup,
+    // VxeSelect,
+    // VxeSwitch,
+    // VxeTextarea,
+    // VxeTooltip
+} from 'vxe-pc-ui'
+
 import './index.scss'
 
-// 按需加载的方式默认是不带国际化的，自定义国际化需要自行解析占位符 '{0}'，例如：
-VXETable.setup({
-    i18n: (key, args) => XEUtils.toFormatString(XEUtils.get(zhCN, key), args),
-})
+function LazyVxeTable(app) {
+    app.use(VxeTable)
+    app.use(VxeColumn)
+    // app.use(VxeColgroup)
+    // app.use(VxeGrid)
+    // app.use(VxeToolbar)
+}
+
+function LazyVxeUI(app) {
+    // app.use(VxeButton)
+    // app.use(VxeButtonGroup)
+    // app.use(VxeCheckbox)
+    // app.use(VxeCheckboxGroup)
+    // app.use(VxeFormItem)
+    // app.use(VxeForm)
+    app.use(VxeIcon)
+    app.use(VxeLoading)
+    // app.use(VxeInput)
+    // app.use(VxeModal)
+    // app.use(VxePager)
+    // app.use(VxePulldown)
+    // app.use(VxeRadio)
+    // app.use(VxeRadioButton)
+    // app.use(VxeRadioGroup)
+    // app.use(VxeSelect)
+    // app.use(VxeSwitch)
+    // app.use(VxeTextarea)
+    // app.use(VxeTooltip)
+}
+// 导入默认的语言
+import zhCN from 'vxe-pc-ui/lib/language/zh-CN'
+
+VxeUI.setI18n('zh-CN', zhCN)
+VxeUI.setLanguage('zh-CN')
 // 全局默认参数
-VXETable.setup({
-    size: 'medium',
+VxeUI.setConfig({
     version: 0,
     zIndex: 1002,
     table: {
-        size: 'medium',
         // 自动监听父元素的变化去重新计算表格
         autoResize: true,
         // 鼠标移到行是否要高亮显示
         highlightHoverRow: true,
         // stripe: true,
-        align: 'center',
-        border: false,
+        align: 'left',
+        border: 'inner',
     },
     pager: {
-        size: 'medium',
+        size: 'small',
         align: 'right',
         layouts: ['Sizes', 'PrevPage', 'Jump', 'PageCount', 'NextPage', 'Total'],
         pageSizes: [30, 50, 100],
     },
-    input: {},
-    modal: {},
 })
 
 export function useTable(app: App) {
-    app.use(Icon)
-        .use(Filter)
-        .use(Edit)
-        .use(Menu)
-        .use(Export)
-        .use(Keyboard)
-        .use(Validator)
-        // 可选组件
-        .use(Column)
-        .use(Colgroup)
-        .use(Grid)
-        .use(Tooltip)
-        .use(Toolbar)
-        .use(Pager)
-        .use(Form)
-        .use(FormItem)
-        .use(FormGather)
-        .use(Checkbox)
-        .use(CheckboxGroup)
-        .use(Radio)
-        .use(RadioGroup)
-        .use(RadioButton)
-        .use(Switch)
-        .use(Input)
-        .use(Select)
-        .use(Optgroup)
-        .use(Option)
-        .use(Textarea)
-        .use(Button)
-        .use(Modal)
-        .use(List)
-        .use(Pulldown)
-        // 安装表格
-        .use(Table)
+    app.use(LazyVxeUI).use(LazyVxeTable)
 }
