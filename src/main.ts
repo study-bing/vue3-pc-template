@@ -12,10 +12,12 @@ import './style/index.scss'
 import 'virtual:svg-icons-register'
 import i18n from './utils/i18n'
 const app = createApp(App)
+import Particles from 'particles.vue3'
+
 getServerConfig(app).then(async () => {
     app.use(router)
     await router.isReady()
     setupStore(app)
-    app.use(useTable).use(useEcharts).use(i18n)
+    app.use(useTable).use(useEcharts).use(i18n).use(Particles)
     app.mount('#app')
 })
